@@ -1,0 +1,31 @@
+<div class="container">
+  <div id="buttons" class="buttons">
+    Pins:
+    <div class="btn-list" *ngFor="let item of [].constructor(11); let i = index">
+      <button *ngIf="hideButton(i)" type="button" (click)="pinHit(i)" class="btn btn-danger">{{i === 0 ? 'Gutter' :
+        i}}</button>
+    </div>
+  </div>
+  <div id='scorecard'>
+    <table id='scorecardTable' class='scorecard' cellpadding='1' cellspacing='0'>
+      <tr>
+        <th *ngFor="let item of [].constructor(10); let i = index" colspan='6'>F{{ i+1 }}</th>
+      </tr>
+      <tr>
+        <ng-container *ngFor="let item of [].constructor(10); let i = index">
+          <td colspan='3'></td>
+          <td id="frame{{i+1}}" colspan='3'>{{frame[i]}}</td>
+        </ng-container>
+      </tr>
+      <tr>
+        <td *ngFor="let item of [].constructor(10); let i = index" colspan='6' id="marker{{i}}">{{marker[i]}}</td>
+      </tr>
+    </table>
+    <div class="total-score fw-bolder">
+      Score: {{getFinalTotal()}}
+    </div>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary btn-lg" (click)="replay()">Replay</button>
+  </div>
+</div>
